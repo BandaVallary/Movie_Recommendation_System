@@ -39,3 +39,19 @@ The data used in this project is the [MovieLens dataset](https://files.grouplens
 - `tags.csv`: Records user-generated tags for movies, featuring user IDs, movie IDs, tags, and timestamps.
 
 The `movieId` is consistent across all files, while `userId` is consistent between the ratings and tags files. This structure facilitates effective analysis for the recommendation system.
+
+![Graph showing the distribution of number of ratings per movie](images/ratings_per_movie.png)
+
+From the graph above, we can see that the distribution of the number of ratings per movie is rightly skewed. This implies that majority of the movies have less than 50 ratings with a few having above 100 ratings for a single movie. 50% of the movies have fewer than 50 ratings.
+
+![Graph showing the distribution of ratings against frequency](images/distribution_of_ratings.png)
+
+Around 49% of movies receive ratings between 3 and 4. This implies that most movies receive above average ratings and fewer movies receive extremely low or high ratings.
+
+![Graph showing the top 15 most popular movies by number of ratings](images/top_15_most_popular_movies.png)
+
+In the graph above, we plot the 15 most popular movies by number of ratings.
+
+![Graph showing the top 15 movies by average rating(movies with a minimum of 100 ratings)](images/top_15_highest_rated_movies.png)
+
+In the graph above, we plot the 15 highest rated movies. The movies shown all have at least 100 ratings.
