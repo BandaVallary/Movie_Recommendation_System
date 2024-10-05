@@ -62,40 +62,95 @@ The modeling process involved developing and evaluating seven different models t
 
 - Baseline Model: We used a  simple KNN-based model using cosine similarity to assess user similarity.
 
-- Pearson Similarity Model: A variant of the KNN model that uses Pearson correlation for user similarity.
+- Pearson Similarity Model: Modified the baseline to use Pearson correlation instead of cosine similarity.
 
-- KNN with Means: This model uses KNN while adjusting for average ratings, aiming to improve predictions.
+- KNN with Means: Utilized KNNWithMeans to account for mean ratings of users.
 
 - KNN Baseline: Similar to the baseline model but incorporates user and item biases.
 
 - SVD Model: A matrix factorization technique was used to capture latent factors influencing user ratings.
 
-- Hyperparameter Tuning: We fine-tuned the SVD model using grid search to identify optimal hyperparameters, enhancing performance.
+- Hyperparameter Tuning: We fine-tuned the SVD model using grid search to identify optimal hyperparameters.
 
-- Neural Network: We developed a deep learning approach using user and movie embeddings, consisting of several dense layers to predict ratings based on interactions.
+- Neural Network: We developed a deep learning model with embedding layers for users and movies.
 
 ## Model Performance and Hyperparameters
 
-1. Baseline Model: Achieved an RMSE of 0.9736 using cosine similarity.
+1. Baseline Model (KNNBasic with cosine similarity)
 
-2. Pearson Similarity Model: Achieved an RMSE of 0.9742, slightly worse than the baseline, indicating that cosine similarity may be more effective in this context.
+    - RMSE: 0.9736
+    - Using cosine similarity
+    - Simple implementation as a starting point
 
-3. KNN with Means: Improved performance with an RMSE of 0.9017, suggesting that accounting for average ratings helps enhance predictions.
+2. Pearson Similarity Model
 
-4. KNN Baseline: Further improved with an RMSE of 0.8792, showing the value of incorporating user and item biases.
+    - RMSE of 0.9742
+    - Slightly worse than the baseline, indicating that cosine similarity may be more effective.
 
-5. SVD Model: Achieved an RMSE of 0.8732, demonstrating the effectiveness of matrix factorization in capturing underlying patterns.
+3. KNN with Means
 
-6. Hyperparameter Tuning (SVD): The best model obtained through grid search yielded an RMSE of 0.8693. Key hyperparameters included:
+    - RMSE: 0.9017
+    - This improved performance suggests that accounting for average ratings helps enhance predictions.
 
-    - n_factors: 50, 100, 150
-    - reg_all: 0.02, 0.05, 0.1
+4. KNN Baseline
 
-7. Neural Network: This model resulted in an RMSE of 0.8876. Notable aspects of the this included:
+    - RMSE: 0.8792
+    - This further improvement suggests the value of incorporating user and item biases.
 
-    - Embedding dimensions: 50
-    - Dense layers: Two hidden layers with 128 and 64 neurons, respectively.
-    - Dropout rates: 0.5 to prevent overfitting.
-    - Optimizer: Adam with a learning rate of 0.0001.
+5. SVD Model
 
-Overall, the models showed a clear progression in performance, with hyperparameter tuning of the SVD model yielding the best results, demonstrating the importance of optimization in collaborative filtering tasks.
+    - RMSE: 0.8732
+    - The best performing non-tuned model.
+    - Demonstrates the effectiveness of matrix factorization in capturing underlying patterns.
+
+6. Hyperparameter-Tuned SVD
+
+    - RMSE: 0.8693
+    - Best overall performance
+    - Key hyperparameters:
+        - n_factors: 50, 100, 150
+        - reg_all: 0.02, 0.05, 0.1
+
+7. Neural Network
+
+    - RMSE: 0.8876
+    - Architecture:
+        - Embedding dimensions: 50
+        - Dense layers: Two hidden layers with 128 and 64 neurons, respectively.
+        - Dropout rates: 0.5 to prevent overfitting.
+
+    - Training Details:
+
+        - Optimizer: Adam with a learning rate of 0.0001.
+        - Batch size: 256
+        - Early stopping with patience of 5
+        - Epochs: 20
+
+Overall, the models showed a clear progression in performance, with hyperparameter tuning of the SVD model yielding the best results, demonstrating the importance of optimization in collaborative filtering tasks. The neural network performance was competitive but not superior to traditional methods.
+
+## Conclusions
+
+- Model Performance
+
+  - Traditional collaborative filtering methods outperformed the neural network approach.
+  - Hyperparameter tuning yielded significant improvements.
+  - The best model (tuned SVD) achieved an RMSE of 0.8693, which indicates reasonably accurate predictions.
+
+- Methodology
+
+  - Simple similarity-based methods (cosine, Pearson) were less effective
+  - Accounting for user and item biases (KNN Baseline) dramatically improved results
+  - Matrix factorization (SVD) proved most effective for this dataset
+
+## Recommendations
+
+- Address Overfitting: Although dropout layers and early stopping were implemented, the model still showed signs of overfitting. Future work could explore further regularization techniques, such as weight decay or using a simpler model architecture, to generalize better to unseen data.
+
+- Incorporate additional features such as gender, geographical location, movie director information, actors, release dates and so much more to improve model predictions and provide a more personalized recemmendation system.
+
+## For a thorough analysis of this dataset, checkout this [notebook](https://github.com/BandaVallary/Movie_Recommendation_System/blob/main/notebook.ipynb)
+
+### Licence
+
+This project is licenced under the [MIT Licence](https://github.com/BandaVallary/Movie_Recommendation_System/blob/main/LICENSE)
+  
