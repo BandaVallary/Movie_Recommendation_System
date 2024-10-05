@@ -2,6 +2,8 @@
 
 ![Image of movie clapperboard](images/movie_img_cropped.jpeg)
 
+View presentation slides for this project [here](https://www.canva.com/design/DAGSs8ZMZDk/ArLS4lvttoU_O2Jr2TWpAw/edit?utm_content=DAGSs8ZMZDk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 ## Summary
 
 In this project, we used the MovieLens dataset, which includes 100,836 user ratings from 610 users, averaging 3.5 out of 5. This dataset is ideal for building a recommendation system, leveraging both collaborative and content-based filtering.
